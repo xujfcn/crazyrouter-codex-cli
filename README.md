@@ -2,7 +2,7 @@
 
 > **Save 45% on Codex CLI costs** — Route through Crazyrouter for cheaper API access.
 
-[Crazyrouter](https://crazyrouter.com?ref=github) — One API key, 300+ models, 45% cheaper.
+[Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community?ref=github) — One API key, 300+ models, 45% cheaper.
 
 ## 💰 Price Comparison
 
@@ -22,7 +22,7 @@ npm install -g @openai/codex
 ### 2. Configure Crazyrouter
 ```bash
 export OPENAI_API_KEY=sk-your-crazyrouter-key
-export OPENAI_BASE_URL=https://crazyrouter.com/v1
+export OPENAI_BASE_URL=https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community/v1
 ```
 
 ### 3. Run
@@ -36,7 +36,7 @@ codex
 cat >> ~/.zshrc << 'CONF'
 # Codex CLI via Crazyrouter
 export OPENAI_API_KEY=sk-your-crazyrouter-key
-export OPENAI_BASE_URL=https://crazyrouter.com/v1
+export OPENAI_BASE_URL=https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community/v1
 CONF
 source ~/.zshrc
 ```
@@ -70,7 +70,7 @@ A: Yes! Through Crazyrouter you can use Claude, Gemini, Llama, etc.
 A: Node.js 22+ required. Use `nvm install 22` if needed.
 
 ## 🔗 Links
-- 🌐 [Crazyrouter](https://crazyrouter.com?ref=github) | 📦 [Codex CLI](https://github.com/openai/codex) | 💬 [Telegram](https://t.me/crzrouter)
+- 🌐 [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community?ref=github) | 📦 [Codex CLI](https://github.com/openai/codex) | 💬 [Telegram](https://t.me/crzrouter)
 
 ## 📄 License
 MIT
