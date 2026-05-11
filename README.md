@@ -1,76 +1,160 @@
 # ⚡ Use OpenAI Codex CLI with Crazyrouter
 
-> **Save 45% on Codex CLI costs** — Route through Crazyrouter for cheaper API access.
+Run OpenAI Codex CLI through [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community) with one command.
 
-[Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community?ref=github) — One API key, 300+ models, 45% cheaper.
+Crazyrouter provides an OpenAI-compatible API endpoint, so Codex CLI can use Crazyrouter by setting the API key and base URL.
 
-## 💰 Price Comparison
+> Important: API endpoints should **not** include UTM parameters. Use UTM only on human-facing links.
 
-| Model | Official (In/Out per 1M) | Crazyrouter | Savings |
-|-------|--------------------------|-------------|---------|
-| GPT-4o | $2.50 / $10 | $1.38 / $5.50 | **45%** |
-| o3-mini | $1.10 / $4.40 | $0.61 / $2.42 | **45%** |
-| GPT-4o-mini | $0.15 / $0.60 | $0.08 / $0.33 | **45%** |
+## 🚀 One-click setup
 
-## ⚡ Quick Start
+### Windows
+
+Open PowerShell as your normal user and run:
+
+```powershell
+iwr -UseB https://raw.githubusercontent.com/xujfcn/crazyrouter-codex-cli/main/install-crazyrouter-codex.ps1 | iex
+```
+
+Or download and double-click:
+
+```text
+install-crazyrouter-codex.bat
+```
+
+### macOS / Linux
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/xujfcn/crazyrouter-codex-cli/main/install-crazyrouter-codex.sh | bash
+```
+
+The installer will:
+
+- ask for your Crazyrouter API key
+- save it as an environment variable
+- configure Codex CLI to use `https://crazyrouter.com/v1`
+- back up your existing Codex config if one exists
+
+## ⚡ Manual quick start
 
 ### 1. Install Codex CLI
+
 ```bash
 npm install -g @openai/codex
 ```
 
-### 2. Configure Crazyrouter
+### 2. Set environment variables
+
+macOS / Linux:
+
 ```bash
 export OPENAI_API_KEY=sk-your-crazyrouter-key
-export OPENAI_BASE_URL=https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community/v1
+export OPENAI_BASE_URL=https://crazyrouter.com/v1
 ```
 
-### 3. Run
+Windows PowerShell:
+
+```powershell
+setx OPENAI_API_KEY "sk-your-crazyrouter-key"
+setx OPENAI_BASE_URL "https://crazyrouter.com/v1"
+```
+
+Restart your terminal after using `setx`.
+
+### 3. Run Codex
+
 ```bash
 codex
 ```
 
-## 🔧 Persistent Config
+## 🔧 Persistent config
+
+### macOS / Linux
 
 ```bash
 cat >> ~/.zshrc << 'CONF'
 # Codex CLI via Crazyrouter
 export OPENAI_API_KEY=sk-your-crazyrouter-key
-export OPENAI_BASE_URL=https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community/v1
+export OPENAI_BASE_URL=https://crazyrouter.com/v1
 CONF
 source ~/.zshrc
 ```
 
-## 🎯 Model Selection
+If you use Bash, write the same lines to `~/.bashrc` instead.
 
-```bash
-codex                              # Default: GPT-4o
-codex --model o3-mini              # Cheaper reasoning
-codex --model gpt-4o-mini          # Budget option
-codex --model claude-sonnet-4-20250514  # Claude via Crazyrouter
+### Windows PowerShell
+
+```powershell
+setx OPENAI_API_KEY "sk-your-crazyrouter-key"
+setx OPENAI_BASE_URL "https://crazyrouter.com/v1"
 ```
 
-## 🔒 Safety Modes
+## 🧩 Codex config.toml option
+
+Some Codex versions support provider configuration in `%USERPROFILE%\.codex\config.toml` on Windows or `~/.codex/config.toml` on macOS/Linux.
+
+```toml
+model = "gpt-5.5"
+model_provider = "crazyrouter"
+
+[model_providers.crazyrouter]
+name = "Crazyrouter"
+base_url = "https://crazyrouter.com/v1"
+env_key = "OPENAI_API_KEY"
+wire_api = "chat"
+
+[model_providers.crazyrouter.query_params]
+```
+
+## 🎯 Model selection
 
 ```bash
-codex --approval-mode suggest      # Read-only suggestions
-codex --approval-mode auto-edit    # Auto-edit, confirm commands
-codex --approval-mode full-auto    # Full autonomous mode
+codex                              # default model from config
+codex --model gpt-5.5              # Crazyrouter default recommendation
+codex --model gpt-4o-mini          # budget option
+codex --model claude-sonnet-4-6    # Claude via Crazyrouter, if enabled in your account
+```
+
+Model availability may vary by account and provider route. Check the Crazyrouter model list before using a model name in production.
+
+## 🔒 Safety modes
+
+```bash
+codex --approval-mode suggest      # read-only suggestions
+codex --approval-mode auto-edit    # auto-edit, confirm commands
+codex --approval-mode full-auto    # full autonomous mode
 ```
 
 ## ❓ FAQ
 
-**Q: Does Codex CLI work with Crazyrouter?**
-A: Yes, 100% compatible. Just set `OPENAI_BASE_URL`.
+**Q: Does Codex CLI work with Crazyrouter?**  
+A: Yes. Crazyrouter exposes an OpenAI-compatible endpoint. Use `https://crazyrouter.com/v1` as the base URL.
 
-**Q: Can I use non-OpenAI models?**
-A: Yes! Through Crazyrouter you can use Claude, Gemini, Llama, etc.
+**Q: Should I add UTM parameters to `OPENAI_BASE_URL`?**  
+A: No. Never add UTM parameters to API endpoints. This is wrong:
 
-**Q: Node.js version requirement?**
-A: Node.js 22+ required. Use `nvm install 22` if needed.
+```bash
+export OPENAI_BASE_URL=https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community/v1
+```
+
+Use this instead:
+
+```bash
+export OPENAI_BASE_URL=https://crazyrouter.com/v1
+```
+
+**Q: Can I use non-OpenAI models?**  
+A: Yes. Through Crazyrouter, you can use supported Claude, Gemini, Llama, Qwen, DeepSeek, and other models with compatible routes.
+
+**Q: Node.js version requirement?**  
+A: Node.js 22+ is recommended. Use `nvm install 22` if needed.
 
 ## 🔗 Links
-- 🌐 [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community?ref=github) | 📦 [Codex CLI](https://github.com/openai/codex) | 💬 [Telegram](https://t.me/crzrouter)
+
+- 🌐 [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community)
+- 📦 [Codex CLI](https://github.com/openai/codex)
+- 💬 [Telegram](https://t.me/crzrouter)
 
 ## 📄 License
+
 MIT
