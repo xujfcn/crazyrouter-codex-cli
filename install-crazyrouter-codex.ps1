@@ -43,7 +43,7 @@ model_provider = "crazyrouter"
 name = "Crazyrouter"
 base_url = "https://cn.crazyrouter.com/v1"
 env_key = "OPENAI_API_KEY"
-wire_api = "chat"
+wire_api = "responses"
 
 [model_providers.crazyrouter.query_params]
 "@

@@ -101,7 +101,7 @@ model_provider = "crazyrouter"
 name = "Crazyrouter"
 base_url = "https://cn.crazyrouter.com/v1"
 env_key = "OPENAI_API_KEY"
-wire_api = "chat"
+wire_api = "responses"
 
 [model_providers.crazyrouter.query_params]
 ```
@@ -142,6 +142,20 @@ Use this instead:
 ```bash
 export OPENAI_BASE_URL=https://cn.crazyrouter.com/v1
 ```
+
+
+**Q: Codex says `wire_api = "chat" is no longer supported`. What should I do?**  
+A: Update your Codex provider config to use the Responses API:
+
+```toml
+[model_providers.crazyrouter]
+name = "Crazyrouter"
+base_url = "https://cn.crazyrouter.com/v1"
+env_key = "OPENAI_API_KEY"
+wire_api = "responses"
+```
+
+If you installed with an older version of this script, edit your Codex config file and replace `wire_api = "chat"` with `wire_api = "responses"`.
 
 **Q: Can I use non-OpenAI models?**  
 A: Yes. Through Crazyrouter, you can use supported Claude, Gemini, Llama, Qwen, DeepSeek, and other models with compatible routes.
