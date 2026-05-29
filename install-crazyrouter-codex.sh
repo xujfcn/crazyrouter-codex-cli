@@ -2,7 +2,7 @@
 set -euo pipefail
 
 echo "Crazyrouter Codex CLI installer"
-echo "This will configure Codex CLI to use https://crazyrouter.com/v1"
+echo "This will configure Codex CLI to use https://cn.crazyrouter.com/v1"
 echo
 
 CODEX_DIR="$HOME/.codex"
@@ -33,7 +33,7 @@ model_provider = "crazyrouter"
 
 [model_providers.crazyrouter]
 name = "Crazyrouter"
-base_url = "https://crazyrouter.com/v1"
+base_url = "https://cn.crazyrouter.com/v1"
 env_key = "OPENAI_API_KEY"
 wire_api = "chat"
 
@@ -51,14 +51,14 @@ esac
   echo ""
   echo "# Codex CLI via Crazyrouter"
   echo "export OPENAI_API_KEY='$API_KEY'"
-  echo "export OPENAI_BASE_URL='https://crazyrouter.com/v1'"
+  echo "export OPENAI_BASE_URL='https://cn.crazyrouter.com/v1'"
 } >> "$SHELL_RC"
 
 echo
 echo "Done. Codex CLI is now configured to use Crazyrouter."
 echo "Config: $CONFIG_PATH"
 echo "Model: $MODEL"
-echo "Base URL: https://crazyrouter.com/v1"
+echo "Base URL: https://cn.crazyrouter.com/v1"
 echo "Shell config updated: $SHELL_RC"
 echo
 echo "Run this now, or restart your terminal:"

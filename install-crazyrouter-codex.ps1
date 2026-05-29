@@ -5,7 +5,7 @@
 $ErrorActionPreference = "Stop"
 
 Write-Host "Crazyrouter Codex CLI installer" -ForegroundColor Cyan
-Write-Host "This will configure Codex CLI to use https://crazyrouter.com/v1" -ForegroundColor Gray
+Write-Host "This will configure Codex CLI to use https://cn.crazyrouter.com/v1" -ForegroundColor Gray
 Write-Host ""
 
 $codexDir = Join-Path $env:USERPROFILE ".codex"
@@ -33,7 +33,7 @@ if ([string]::IsNullOrWhiteSpace($model)) {
 }
 
 [Environment]::SetEnvironmentVariable("OPENAI_API_KEY", $key, "User")
-[Environment]::SetEnvironmentVariable("OPENAI_BASE_URL", "https://crazyrouter.com/v1", "User")
+[Environment]::SetEnvironmentVariable("OPENAI_BASE_URL", "https://cn.crazyrouter.com/v1", "User")
 
 $toml = @"
 model = "$model"
@@ -41,7 +41,7 @@ model_provider = "crazyrouter"
 
 [model_providers.crazyrouter]
 name = "Crazyrouter"
-base_url = "https://crazyrouter.com/v1"
+base_url = "https://cn.crazyrouter.com/v1"
 env_key = "OPENAI_API_KEY"
 wire_api = "chat"
 
@@ -54,6 +54,6 @@ Write-Host ""
 Write-Host "Done. Codex CLI is now configured to use Crazyrouter." -ForegroundColor Green
 Write-Host "Config: $configPath"
 Write-Host "Model: $model"
-Write-Host "Base URL: https://crazyrouter.com/v1"
+Write-Host "Base URL: https://cn.crazyrouter.com/v1"
 Write-Host ""
 Write-Host "Restart your terminal before running codex so the new environment variables are loaded." -ForegroundColor Cyan

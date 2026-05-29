@@ -32,7 +32,7 @@ The installer will:
 
 - ask for your Crazyrouter API key
 - save it as an environment variable
-- configure Codex CLI to use `https://crazyrouter.com/v1`
+- configure Codex CLI to use `https://cn.crazyrouter.com/v1`
 - back up your existing Codex config if one exists
 
 ## ⚡ Manual quick start
@@ -49,14 +49,14 @@ macOS / Linux:
 
 ```bash
 export OPENAI_API_KEY=sk-your-crazyrouter-key
-export OPENAI_BASE_URL=https://crazyrouter.com/v1
+export OPENAI_BASE_URL=https://cn.crazyrouter.com/v1
 ```
 
 Windows PowerShell:
 
 ```powershell
 setx OPENAI_API_KEY "sk-your-crazyrouter-key"
-setx OPENAI_BASE_URL "https://crazyrouter.com/v1"
+setx OPENAI_BASE_URL "https://cn.crazyrouter.com/v1"
 ```
 
 Restart your terminal after using `setx`.
@@ -75,7 +75,7 @@ codex
 cat >> ~/.zshrc << 'CONF'
 # Codex CLI via Crazyrouter
 export OPENAI_API_KEY=sk-your-crazyrouter-key
-export OPENAI_BASE_URL=https://crazyrouter.com/v1
+export OPENAI_BASE_URL=https://cn.crazyrouter.com/v1
 CONF
 source ~/.zshrc
 ```
@@ -86,7 +86,7 @@ If you use Bash, write the same lines to `~/.bashrc` instead.
 
 ```powershell
 setx OPENAI_API_KEY "sk-your-crazyrouter-key"
-setx OPENAI_BASE_URL "https://crazyrouter.com/v1"
+setx OPENAI_BASE_URL "https://cn.crazyrouter.com/v1"
 ```
 
 ## 🧩 Codex config.toml option
@@ -99,7 +99,7 @@ model_provider = "crazyrouter"
 
 [model_providers.crazyrouter]
 name = "Crazyrouter"
-base_url = "https://crazyrouter.com/v1"
+base_url = "https://cn.crazyrouter.com/v1"
 env_key = "OPENAI_API_KEY"
 wire_api = "chat"
 
@@ -128,19 +128,19 @@ codex --approval-mode full-auto    # full autonomous mode
 ## ❓ FAQ
 
 **Q: Does Codex CLI work with Crazyrouter?**  
-A: Yes. Crazyrouter exposes an OpenAI-compatible endpoint. Use `https://crazyrouter.com/v1` as the base URL.
+A: Yes. Crazyrouter exposes an OpenAI-compatible endpoint. Use `https://cn.crazyrouter.com/v1` as the base URL.
 
 **Q: Should I add UTM parameters to `OPENAI_BASE_URL`?**  
 A: No. Never add UTM parameters to API endpoints. This is wrong:
 
 ```bash
-export OPENAI_BASE_URL=https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community/v1
+export OPENAI_BASE_URL=https://cn.crazyrouter.com/v1
 ```
 
 Use this instead:
 
 ```bash
-export OPENAI_BASE_URL=https://crazyrouter.com/v1
+export OPENAI_BASE_URL=https://cn.crazyrouter.com/v1
 ```
 
 **Q: Can I use non-OpenAI models?**  
