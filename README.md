@@ -1,5 +1,7 @@
 # ⚡ Use OpenAI Codex CLI with Crazyrouter
 
+[中文使用指南](./README.zh-CN.md)
+
 Run OpenAI Codex CLI through [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community) with one command.
 
 Crazyrouter provides an OpenAI-compatible API endpoint, so Codex CLI can use Crazyrouter by setting the API key and base URL.
@@ -134,7 +136,7 @@ A: Yes. Crazyrouter exposes an OpenAI-compatible endpoint. Use `https://cn.crazy
 A: No. Never add UTM parameters to API endpoints. This is wrong:
 
 ```bash
-export OPENAI_BASE_URL=https://cn.crazyrouter.com/v1
+export OPENAI_BASE_URL=https://cn.crazyrouter.com/v1?utm_source=github
 ```
 
 Use this instead:
