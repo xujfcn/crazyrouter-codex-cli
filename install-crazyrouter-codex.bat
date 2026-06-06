@@ -1,9 +1,10 @@
 @echo off
 setlocal
 
-REM One-click switch OpenAI Codex CLI to Crazyrouter on Windows.
-REM This wrapper runs the PowerShell installer in this repository.
+REM One-click OpenAI Codex CLI setup for Crazyrouter on Windows.
+REM Pass arguments through, for example:
+REM   install-crazyrouter-codex.bat -Mode switch
 
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0install-crazyrouter-codex.ps1"
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0install-crazyrouter-codex.ps1" %*
 
 pause
