@@ -1,20 +1,33 @@
+<div align="center">
+
 # Использование OpenAI Codex CLI с Crazyrouter
 
-Языки: [English](./README.en.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [Русский](./README.ru.md)
+**Подключите Codex CLI к Crazyrouter и используйте поддерживаемые модели через OpenAI-совместимый API.**
 
-В этом руководстве описано, как подключить OpenAI Codex CLI к [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community). Crazyrouter предоставляет OpenAI-совместимый API, поэтому Codex CLI обычно нужно настроить только API key, Base URL и имя модели.
+[English](./README.en.md) · [简体中文](./README.zh-CN.md) · [日本語](./README.ja.md) · [Русский](./README.ru.md)
 
-Рекомендуемый Base URL:
+![OpenAI Compatible](https://img.shields.io/badge/API-OpenAI%20compatible-111111?style=flat-square)
+![Codex CLI](https://img.shields.io/badge/Tool-Codex%20CLI-111111?style=flat-square)
+![Base URL](https://img.shields.io/badge/Base%20URL-%2Fv1-2563eb?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-111111?style=flat-square)
 
-```text
-https://cn.crazyrouter.com/v1
-```
-
-Не добавляйте UTM-параметры в `OPENAI_BASE_URL`. UTM-параметры предназначены для веб-ссылок, которые открывают люди, а не для API endpoint.
+</div>
 
 ---
 
-## Какой Режим Выбрать?
+## Кратко
+
+| Пункт | Значение |
+| --- | --- |
+| Цель | Подключить OpenAI Codex CLI к [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community) |
+| Формат API | OpenAI-compatible |
+| Рекомендуемый Base URL | `https://cn.crazyrouter.com/v1` |
+| Что нужно настроить | `OPENAI_API_KEY`, `OPENAI_BASE_URL`, имя модели |
+| Важное правило | Не добавляйте UTM-параметры в `OPENAI_BASE_URL` |
+
+---
+
+## Выберите Способ Установки
 
 | Ситуация | Рекомендуемый режим |
 | --- | --- |

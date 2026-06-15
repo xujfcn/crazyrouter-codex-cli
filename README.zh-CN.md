@@ -1,20 +1,33 @@
+<div align="center">
+
 # 使用 Crazyrouter 运行 OpenAI Codex CLI
 
-语言：[English](./README.en.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [Русский](./README.ru.md)
+**几分钟内把 Codex CLI 接入 Crazyrouter，通过 OpenAI-compatible API 使用 Crazyrouter 支持的模型。**
 
-本教程面向希望把 OpenAI Codex CLI 接入 [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community) 的用户。Crazyrouter 提供 OpenAI-compatible API，因此 Codex CLI 通常只需要配置 API Key、Base URL 和模型名即可使用。
+[English](./README.en.md) · [简体中文](./README.zh-CN.md) · [日本語](./README.ja.md) · [Русский](./README.ru.md)
 
-推荐 Base URL：
+![OpenAI Compatible](https://img.shields.io/badge/API-OpenAI%20compatible-111111?style=flat-square)
+![Codex CLI](https://img.shields.io/badge/Tool-Codex%20CLI-111111?style=flat-square)
+![Base URL](https://img.shields.io/badge/Base%20URL-%2Fv1-2563eb?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-111111?style=flat-square)
 
-```text
-https://cn.crazyrouter.com/v1
-```
-
-注意：`OPENAI_BASE_URL` 不能添加 UTM 参数。UTM 只用于网页链接，不用于 API endpoint。
+</div>
 
 ---
 
-## 你应该选择哪种模式？
+## 快速理解
+
+| 项目 | 说明 |
+| --- | --- |
+| 项目目标 | 把 OpenAI Codex CLI 接入 [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community) |
+| API 形态 | OpenAI-compatible |
+| 推荐 Base URL | `https://cn.crazyrouter.com/v1` |
+| 需要配置 | `OPENAI_API_KEY`、`OPENAI_BASE_URL`、模型名 |
+| 重要规则 | `OPENAI_BASE_URL` 不能添加 UTM 参数 |
+
+---
+
+## 选择你的安装路径
 
 | 场景 | 推荐模式 |
 | --- | --- |

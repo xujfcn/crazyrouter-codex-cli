@@ -1,20 +1,33 @@
+<div align="center">
+
 # Use OpenAI Codex CLI With Crazyrouter
 
-Languages: [English](./README.en.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [Русский](./README.ru.md)
+**Connect Codex CLI to Crazyrouter in minutes, then use Crazyrouter-supported models through an OpenAI-compatible API.**
 
-This guide explains how to connect OpenAI Codex CLI to [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community). Crazyrouter provides an OpenAI-compatible API, so Codex CLI usually needs only an API key, a Base URL, and a model name.
+[English](./README.en.md) · [简体中文](./README.zh-CN.md) · [日本語](./README.ja.md) · [Русский](./README.ru.md)
 
-Recommended Base URL:
+![OpenAI Compatible](https://img.shields.io/badge/API-OpenAI%20compatible-111111?style=flat-square)
+![Codex CLI](https://img.shields.io/badge/Tool-Codex%20CLI-111111?style=flat-square)
+![Base URL](https://img.shields.io/badge/Base%20URL-%2Fv1-2563eb?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-111111?style=flat-square)
 
-```text
-https://cn.crazyrouter.com/v1
-```
-
-Do not add UTM parameters to `OPENAI_BASE_URL`. UTM parameters are only for human-facing web links, not API endpoints.
+</div>
 
 ---
 
-## Which Mode Should You Use?
+## At A Glance
+
+| Item | Value |
+| --- | --- |
+| Project goal | Route OpenAI Codex CLI through [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community) |
+| API style | OpenAI-compatible |
+| Recommended Base URL | `https://cn.crazyrouter.com/v1` |
+| Required settings | `OPENAI_API_KEY`, `OPENAI_BASE_URL`, model name |
+| Important rule | Never add UTM parameters to `OPENAI_BASE_URL` |
+
+---
+
+## Choose Your Setup Path
 
 | Situation | Recommended mode |
 | --- | --- |

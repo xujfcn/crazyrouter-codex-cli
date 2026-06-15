@@ -1,24 +1,29 @@
+<div align="center">
+
 # Crazyrouter Codex CLI
 
-Languages: [English](./README.en.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [Русский](./README.ru.md)
+**Run OpenAI Codex CLI through Crazyrouter with a clean one-command setup for Windows, macOS, and Linux.**
 
-## Multilingual Introduction
+[English](./README.en.md) · [简体中文](./README.zh-CN.md) · [日本語](./README.ja.md) · [Русский](./README.ru.md)
 
-**中文**
+![OpenAI Compatible](https://img.shields.io/badge/API-OpenAI%20compatible-111111?style=flat-square)
+![Codex CLI](https://img.shields.io/badge/Tool-Codex%20CLI-111111?style=flat-square)
+![Windows](https://img.shields.io/badge/Windows-PowerShell-2563eb?style=flat-square)
+![macOS Linux](https://img.shields.io/badge/macOS%20%2F%20Linux-Bash-16a34a?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-111111?style=flat-square)
 
-本项目帮助你把 OpenAI Codex CLI 快速连接到 [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community)。你可以使用 Crazyrouter 的 OpenAI-compatible API，在 Codex CLI 中调用 Crazyrouter 支持的模型。仓库提供 Windows、macOS、Linux 的一键脚本，也提供手动配置说明，适合新用户安装，也适合已有 Codex CLI 的用户切换 Base URL。
+</div>
 
-**日本語**
+---
 
-このプロジェクトは、OpenAI Codex CLI を [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community) にすばやく接続するためのセットアップガイドとスクリプトです。Crazyrouter の OpenAI-compatible API を使い、Codex CLI から Crazyrouter 対応モデルを利用できます。Windows、macOS、Linux 向けのワンクリックスクリプトと手動設定手順を用意しています。
+## Project In Four Languages
 
-**Русский**
-
-Этот проект помогает быстро подключить OpenAI Codex CLI к [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community). Через OpenAI-совместимый API Crazyrouter вы можете использовать в Codex CLI модели, доступные в Crazyrouter. Репозиторий содержит скрипты установки для Windows, macOS и Linux, а также инструкции для ручной настройки.
-
-**English**
-
-This project helps you connect OpenAI Codex CLI to [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community). Crazyrouter provides an OpenAI-compatible API, so Codex CLI can use Crazyrouter-supported models by setting an API key, a Base URL, and a model name. The repository includes one-command scripts for Windows, macOS, and Linux, plus manual setup instructions.
+| Language | Introduction |
+| --- | --- |
+| 中文 | 本项目帮助你把 OpenAI Codex CLI 快速连接到 [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community)，并通过 Crazyrouter 的 OpenAI-compatible API 调用支持的模型。 |
+| 日本語 | OpenAI Codex CLI を [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community) に接続し、Crazyrouter の OpenAI-compatible API 経由で対応モデルを利用できます。 |
+| Русский | Проект помогает подключить OpenAI Codex CLI к [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community) и использовать модели Crazyrouter через OpenAI-совместимый API. |
+| English | Connect OpenAI Codex CLI to [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community), then use Crazyrouter-supported models through an OpenAI-compatible API. |
 
 ---
 
@@ -33,22 +38,23 @@ This project helps you connect OpenAI Codex CLI to [Crazyrouter](https://crazyro
 
 ---
 
-## What This Repository Provides
+## What You Get
 
-- Windows PowerShell installer: `install-crazyrouter-codex.ps1`
-- Windows double-click launcher: `install-crazyrouter-codex.bat`
-- macOS / Linux installer: `install-crazyrouter-codex.sh`
-- Two setup modes:
-  - **Full setup**: install or check Git, Node.js, Codex CLI, then configure Crazyrouter.
-  - **Switch mode**: keep your existing Codex CLI installation and only switch it to Crazyrouter.
-- Codex config backup before rewriting `config.toml`.
-- A consistent OpenAI-compatible Base URL:
+| Need | Included file or flow |
+| --- | --- |
+| Windows installer | `install-crazyrouter-codex.ps1` |
+| Windows double-click entry | `install-crazyrouter-codex.bat` |
+| macOS / Linux installer | `install-crazyrouter-codex.sh` |
+| Existing Codex CLI users | Switch mode, config backup, Crazyrouter provider rewrite |
+| New users | Full setup for Git, Node.js, Codex CLI, environment variables, test project |
+
+The scripts write a consistent OpenAI-compatible Base URL:
 
 ```text
 https://cn.crazyrouter.com/v1
 ```
 
-Do not add UTM parameters to API endpoints. UTM parameters are only for web links opened by people.
+Do not add UTM parameters to API endpoints. UTM parameters are only for links opened by people.
 
 ---
 

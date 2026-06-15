@@ -1,20 +1,33 @@
+<div align="center">
+
 # Crazyrouter で OpenAI Codex CLI を使う
 
-言語: [English](./README.en.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [Русский](./README.ru.md)
+**Codex CLI を Crazyrouter に接続し、OpenAI-compatible API 経由で対応モデルをすばやく利用できます。**
 
-このガイドでは、OpenAI Codex CLI を [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community) に接続する方法を説明します。Crazyrouter は OpenAI-compatible API を提供しているため、Codex CLI では通常、API key、Base URL、モデル名を設定するだけで利用できます。
+[English](./README.en.md) · [简体中文](./README.zh-CN.md) · [日本語](./README.ja.md) · [Русский](./README.ru.md)
 
-推奨 Base URL:
+![OpenAI Compatible](https://img.shields.io/badge/API-OpenAI%20compatible-111111?style=flat-square)
+![Codex CLI](https://img.shields.io/badge/Tool-Codex%20CLI-111111?style=flat-square)
+![Base URL](https://img.shields.io/badge/Base%20URL-%2Fv1-2563eb?style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-111111?style=flat-square)
 
-```text
-https://cn.crazyrouter.com/v1
-```
-
-`OPENAI_BASE_URL` に UTM パラメータを追加しないでください。UTM は人がクリックする Web リンク用であり、API endpoint には使いません。
+</div>
 
 ---
 
-## どのモードを選ぶべきか
+## 概要
+
+| 項目 | 内容 |
+| --- | --- |
+| 目的 | OpenAI Codex CLI を [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community) に接続する |
+| API 形式 | OpenAI-compatible |
+| 推奨 Base URL | `https://cn.crazyrouter.com/v1` |
+| 必要な設定 | `OPENAI_API_KEY`、`OPENAI_BASE_URL`、モデル名 |
+| 重要な注意 | `OPENAI_BASE_URL` に UTM パラメータを付けない |
+
+---
+
+## セットアップ方法を選ぶ
 
 | 状況 | 推奨モード |
 | --- | --- |
