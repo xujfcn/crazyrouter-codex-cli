@@ -1,44 +1,39 @@
-# ⚡ 使用 Crazyrouter 运行 OpenAI Codex CLI
+# 使用 Crazyrouter 运行 OpenAI Codex CLI
 
-> English: [README.md](./README.md)
+语言：[English](./README.en.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) | [Русский](./README.ru.md)
 
-用一条命令把 OpenAI Codex CLI 接到 [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community)，通过 Crazyrouter 的 OpenAI-compatible API 使用 Codex CLI。
+本教程面向希望把 OpenAI Codex CLI 接入 [Crazyrouter](https://crazyrouter.com?utm_source=github&utm_medium=github&utm_campaign=dev_community) 的用户。Crazyrouter 提供 OpenAI-compatible API，因此 Codex CLI 通常只需要配置 API Key、Base URL 和模型名即可使用。
 
-Crazyrouter 提供 OpenAI 兼容接口，所以 Codex CLI 通常只需要配置：
+推荐 Base URL：
 
-1. API Key
-2. Base URL
-3. 模型名
+```text
+https://cn.crazyrouter.com/v1
+```
 
-> 重要：API endpoint 不能加 UTM 参数。UTM 只用于人点击的网页链接，不用于 `OPENAI_BASE_URL`。
-
----
-
-## 适合谁用？
-
-如果你想：
-
-- 在国内/内地环境更稳定地使用 Codex CLI；
-- 用一个 API Key 接入多个模型；
-- 在 Codex CLI 里使用 Crazyrouter 支持的 GPT / Claude / Gemini / DeepSeek / Qwen 等模型；
-- 避免每个工具单独配置不同 provider；
-- 用 OpenAI-compatible 方式快速接入；
-
-这个仓库就是给你用的。
+注意：`OPENAI_BASE_URL` 不能添加 UTM 参数。UTM 只用于网页链接，不用于 API endpoint。
 
 ---
 
-## 两种一键模式
+## 你应该选择哪种模式？
 
-### 模式 A：已有 Codex，只切换到本站
+| 场景 | 推荐模式 |
+| --- | --- |
+| 已经可以运行 `codex --version` | 模式 A：只切换到 Crazyrouter |
+| 新电脑或没有安装 Codex CLI | 模式 B：完整一键安装 |
+| 不想运行脚本 | 手动配置 |
 
-适合已经安装过 `codex`、只想把 Codex CLI 接到 Crazyrouter 的用户。脚本会：
+---
+
+## 模式 A：已有 Codex，只切换到 Crazyrouter
+
+适合已经安装过 `codex`、只想把 Codex CLI 的访问地址切到 Crazyrouter 的用户。脚本会：
 
 - 检查 `codex` 命令是否存在；
-- 询问 Crazyrouter API Key 和默认模型；
-- 写入 `OPENAI_API_KEY` / `OPENAI_BASE_URL`；
-- 更新 `~/.codex/config.toml` 或 `%USERPROFILE%\.codex\config.toml`；
-- 自动备份已有 Codex 配置。
+- 询问 Crazyrouter API Key；
+- 询问默认模型名；
+- 写入 `OPENAI_API_KEY` 和 `OPENAI_BASE_URL`；
+- 更新 Codex 的 `config.toml`；
+- 自动备份已有配置。
 
 Windows PowerShell：
 
@@ -52,16 +47,18 @@ macOS / Linux：
 curl -fsSL https://raw.githubusercontent.com/xujfcn/crazyrouter-codex-cli/main/install-crazyrouter-codex.sh | bash -s -- --switch
 ```
 
-### 模式 B：新手完整一键安装
+---
 
-适合完全没有环境的新用户。脚本会自动安装/检查：
+## 模式 B：新用户完整一键安装
+
+适合没有安装环境的新用户。脚本会自动安装或检查：
 
 - Git；
 - Node.js + npm；
 - OpenAI Codex CLI；
 - Crazyrouter API Key 和 Base URL；
 - Codex provider 配置；
-- 一个可测试的本地项目目录。
+- 一个用于测试的本地项目目录。
 
 Windows PowerShell：
 
@@ -69,7 +66,7 @@ Windows PowerShell：
 iwr -UseB https://raw.githubusercontent.com/xujfcn/crazyrouter-codex-cli/main/install-crazyrouter-codex.ps1 | iex
 ```
 
-或者下载后双击：
+也可以下载后双击：
 
 ```text
 install-crazyrouter-codex.bat
@@ -81,36 +78,32 @@ macOS / Linux：
 curl -fsSL https://raw.githubusercontent.com/xujfcn/crazyrouter-codex-cli/main/install-crazyrouter-codex.sh | bash
 ```
 
-默认模式就是完整安装，等同于：
+完整安装是默认模式，等同于：
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/xujfcn/crazyrouter-codex-cli/main/install-crazyrouter-codex.sh | bash -s -- --full
 ```
 
-Windows 本地下载后也可以指定模式：
+如果已经把 Windows 脚本下载到本地，也可以这样指定模式：
 
 ```powershell
 .\install-crazyrouter-codex.ps1 -Mode full
 .\install-crazyrouter-codex.ps1 -Mode switch
 ```
 
-> 新手直接用“模式 B”。已经能正常运行 `codex --version` 的用户，用“模式 A”更快。
-
 ---
 
-## 手动配置教程
+## 手动配置
 
 ### 1. 安装 Codex CLI
 
-新手完整模式会自动安装 Codex CLI。手动安装可以用：
+完整安装模式会自动安装 Codex CLI。手动安装可以使用：
 
 ```bash
 npm install -g @openai/codex
 ```
 
-建议使用 Node.js 22+。
-
-如果你用 nvm：
+建议使用 Node.js 22+。如果你使用 nvm：
 
 ```bash
 nvm install 22
@@ -147,7 +140,7 @@ codex
 
 ### macOS / Linux
 
-如果你用 zsh：
+如果使用 zsh：
 
 ```bash
 cat >> ~/.zshrc << 'CONF'
@@ -158,7 +151,7 @@ CONF
 source ~/.zshrc
 ```
 
-如果你用 Bash，把同样内容写入 `~/.bashrc`。
+如果使用 Bash，把同样内容写入 `~/.bashrc`。
 
 ### Windows PowerShell
 
@@ -169,9 +162,7 @@ setx OPENAI_BASE_URL "https://cn.crazyrouter.com/v1"
 
 ---
 
-## Codex config.toml 配置方式
-
-部分 Codex CLI 版本支持 provider 配置文件。
+## Codex config.toml 示例
 
 配置路径：
 
@@ -193,19 +184,13 @@ wire_api = "responses"
 [model_providers.crazyrouter.query_params]
 ```
 
-注意：新版 Codex CLI 可能要求：
-
-```toml
-wire_api = "responses"
-```
-
-如果你看到：
+如果看到类似下面的错误：
 
 ```text
 wire_api = "chat" is no longer supported
 ```
 
-把旧配置里的：
+把旧配置中的：
 
 ```toml
 wire_api = "chat"
@@ -222,68 +207,33 @@ wire_api = "responses"
 ## 模型选择
 
 ```bash
-codex                              # 使用 config 里的默认模型
-codex --model gpt-5.5              # 推荐默认模型
-codex --model gpt-4o-mini          # 低成本模型
-codex --model claude-sonnet-4-6    # 通过 Crazyrouter 使用 Claude（取决于账户/线路支持）
+codex                              # 使用 config 中的默认模型
+codex --model gpt-5.5              # 示例默认模型
+codex --model gpt-4o-mini          # 示例低成本模型
+codex --model claude-sonnet-4-6    # 示例 Claude 模型，取决于账户和线路支持
 ```
 
-模型是否可用可能随账户、供应商线路、模型状态变化。
-
-使用前建议查看 Crazyrouter 模型列表：
+模型是否可用取决于 Crazyrouter 账户、模型线路、上游状态和当前 Codex CLI 兼容性。使用前建议查看模型列表：
 
 https://crazyrouter.com/models?utm_source=github&utm_medium=github&utm_campaign=dev_community
 
 ---
 
-## 常用命令
-
-### 进入交互模式
+## 验证是否成功
 
 ```bash
-codex
-```
-
-### 指定模型
-
-```bash
-codex --model gpt-5.5
-```
-
-### 查看帮助
-
-```bash
+codex --version
 codex --help
 ```
 
-### 在项目目录里启动
+进入项目目录后启动：
 
 ```bash
 cd your-project
 codex
 ```
 
----
-
-## 安全模式说明
-
-Codex CLI 的不同版本参数可能略有变化，可先用：
-
-```bash
-codex --help
-```
-
-查看当前版本支持的选项。
-
-常见模式大致包括：
-
-```bash
-codex --approval-mode suggest      # 只给建议，更安全
-codex --approval-mode auto-edit    # 可自动改文件，命令需确认
-codex --approval-mode full-auto    # 更自动化，风险更高
-```
-
-建议新手先用保守模式，不要一上来就 full-auto。
+Codex CLI 的命令行参数可能随版本变化，具体可用选项以 `codex --help` 为准。
 
 ---
 
@@ -295,23 +245,21 @@ codex --approval-mode full-auto    # 更自动化，风险更高
 https://cn.crazyrouter.com/v1
 ```
 
-如果你明确要使用 global endpoint，可以改成：
+如果你明确想使用 global endpoint：
 
 ```text
 https://crazyrouter.com/v1
 ```
 
-两者都是 OpenAI-compatible endpoint。
+不要漏掉 `/v1`。
 
-**不要漏掉 `/v1`。**
-
-错误示例：
+错误：
 
 ```text
 https://cn.crazyrouter.com
 ```
 
-正确示例：
+正确：
 
 ```text
 https://cn.crazyrouter.com/v1
@@ -319,33 +267,28 @@ https://cn.crazyrouter.com/v1
 
 ---
 
-## 排错指南
+## 排错
 
-### 1. Codex 找不到命令
+### 1. 找不到 `codex` 命令
 
-如果你用的是新手完整模式，脚本会自动安装 Codex CLI。安装后如果新终端里仍然找不到 `codex`，先检查：
+先检查：
 
 ```bash
 codex --version
-```
-
-检查是否安装成功：
-
-```bash
 npm list -g @openai/codex
 ```
 
-如果没有，重新安装：
+如果没有安装：
 
 ```bash
 npm install -g @openai/codex
 ```
 
-Windows 用户安装后通常需要重新打开 PowerShell；macOS / Linux 用户可以执行脚本最后提示的 `source ~/.zshrc`、`source ~/.bashrc` 或 `source ~/.profile`。
+Windows 用户安装后通常需要重新打开 PowerShell。macOS / Linux 用户可以执行脚本最后提示的 `source ~/.zshrc`、`source ~/.bashrc` 或 `source ~/.profile`。
 
 ### 2. API Key 不生效
 
-检查环境变量：
+检查环境变量。
 
 macOS / Linux：
 
@@ -363,34 +306,32 @@ echo $env:OPENAI_BASE_URL
 
 确认：
 
-- API Key 是 Crazyrouter 控制台里的 key；
+- API Key 来自 Crazyrouter 控制台；
 - Base URL 包含 `/v1`；
 - 终端已经重启；
 - 账户余额充足。
 
 ### 3. 模型不可用
 
-换一个模型测试，例如：
+换一个模型测试：
 
 ```bash
 codex --model gpt-5.5
 ```
 
-或者到模型页确认模型名：
+或到模型页确认模型名：
 
 https://crazyrouter.com/models?utm_source=github&utm_medium=github&utm_campaign=dev_community
 
 ### 4. 500 / 502 / 524 错误
 
-这类错误通常和上游模型、线路波动、超时、长上下文有关。
+这类错误通常与上游模型、线路波动、超时或长上下文有关。建议：
 
-建议：
-
-1. 重试一次；
-2. 换一个相近模型；
-3. 缩短 prompt；
-4. 检查 Base URL；
-5. 如果持续出现，把模型名、错误码、请求时间发给支持。
+1. 重试一次。
+2. 切换到相近模型。
+3. 缩短 prompt。
+4. 检查 Base URL。
+5. 如果持续出现，把模型名、错误码和请求时间发给支持。
 
 参考文章：
 
@@ -400,9 +341,9 @@ https://crazyrouter.com/blog/how-to-fix-ai-api-500-502-524-errors?utm_source=git
 
 ## FAQ
 
-### Codex CLI 可以直接用 Crazyrouter 吗？
+### Codex CLI 可以直接使用 Crazyrouter 吗？
 
-可以。Crazyrouter 提供 OpenAI-compatible endpoint，Codex CLI 只要支持自定义 OpenAI endpoint，就可以通过 Base URL 接入。
+可以。Crazyrouter 提供 OpenAI-compatible endpoint。只要 Codex CLI 支持自定义 OpenAI endpoint，就可以通过 Base URL 接入。
 
 ### `OPENAI_BASE_URL` 可以加 UTM 参数吗？
 
@@ -420,15 +361,15 @@ export OPENAI_BASE_URL=https://cn.crazyrouter.com/v1?utm_source=github
 export OPENAI_BASE_URL=https://cn.crazyrouter.com/v1
 ```
 
-### 可以用 Claude / Gemini / DeepSeek 吗？
+### 可以使用 Claude / Gemini / DeepSeek / Qwen 吗？
 
 可以通过 Crazyrouter 使用支持的非 OpenAI 模型，但具体可用性取决于账户、模型线路和 Codex CLI 当前兼容情况。
 
-### 一定要用 `cn.crazyrouter.com` 吗？
+### 一定要使用 `cn.crazyrouter.com` 吗？
 
-不一定。默认推荐 `https://cn.crazyrouter.com/v1`，如果你更适合 global endpoint，也可以使用 `https://crazyrouter.com/v1`。
+不一定。默认推荐 `https://cn.crazyrouter.com/v1`。如果 global endpoint 更适合你，也可以使用 `https://crazyrouter.com/v1`。
 
-### Node.js 版本要求？
+### Node.js 版本要求是什么？
 
 建议 Node.js 22+。
 
