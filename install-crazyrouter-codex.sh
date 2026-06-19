@@ -221,6 +221,34 @@ extend_npm_path() {
   export PATH="$PATH:$HOME/.npm-global/bin:$HOME/.local/bin"
 }
 
+npm_global_root_writable() {
+  local npm_root probe
+  npm_root="$(npm root -g 2>/dev/null || true)"
+  if [ -z "$npm_root" ]; then
+    return 1
+  fi
+
+  probe="$npm_root/.crazyrouter-write-check-$$"
+  if mkdir -p "$probe" 2>/dev/null; then
+    rmdir "$probe" 2>/dev/null || true
+    return 0
+  fi
+
+  return 1
+}
+
+ensure_user_npm_prefix_if_needed() {
+  if npm_global_root_writable; then
+    extend_npm_path
+    return
+  fi
+
+  warn "npm global install directory is not writable. Switching npm global prefix to $HOME/.npm-global"
+  mkdir -p "$HOME/.npm-global/bin"
+  npm config set prefix "$HOME/.npm-global"
+  extend_npm_path
+}
+
 ensure_codex_installed() {
   if ensure_cmd codex; then
     ok "Codex CLI already installed: $(codex --version 2>/dev/null || echo 'present')"
@@ -228,6 +256,7 @@ ensure_codex_installed() {
   fi
 
   say "Installing OpenAI Codex CLI"
+  ensure_user_npm_prefix_if_needed
   npm install -g @openai/codex
   extend_npm_path
 

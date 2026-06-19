@@ -299,7 +299,34 @@ npm install -g @openai/codex
 
 Windows 用户安装后通常需要重新打开 PowerShell。macOS / Linux 用户可以执行脚本最后提示的 `source ~/.zshrc`、`source ~/.bashrc` 或 `source ~/.profile`。
 
-### 2. macOS 提示无法自动安装 Node.js
+### 2. macOS 安装 Codex CLI 时出现 npm EACCES
+
+如果看到类似下面的错误：
+
+```text
+npm error code EACCES
+npm error path /usr/local/lib/node_modules/@openai
+```
+
+说明当前用户没有权限写入 npm 的全局安装目录。新版一键安装脚本会自动把 npm 全局目录切到用户目录。直接重新运行安装脚本即可：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/xujfcn/crazyrouter-codex-cli/main/install-crazyrouter-codex.sh | bash
+```
+
+也可以手工修复后继续：
+
+```bash
+mkdir -p ~/.npm-global
+npm config set prefix ~/.npm-global
+echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+npm install -g @openai/codex
+```
+
+不建议使用 `sudo npm install -g @openai/codex`，后续容易继续遇到权限和 PATH 问题。
+
+### 3. macOS 提示无法自动安装 Node.js
 
 如果完整安装模式提示无法自动安装 Node.js，可以任选一种方式手动安装 Node.js 22+，然后重新打开终端再运行安装脚本。
 
@@ -332,7 +359,7 @@ node --version
 npm --version
 ```
 
-### 3. API Key 不生效
+### 4. API Key 不生效
 
 检查环境变量。
 
@@ -357,7 +384,7 @@ echo $env:OPENAI_BASE_URL
 - 终端已经重启；
 - 账户余额充足。
 
-### 4. 模型不可用
+### 5. 模型不可用
 
 换一个模型测试：
 
@@ -369,7 +396,7 @@ codex --model gpt-5.5
 
 https://crazyrouter.com/models?utm_source=github&utm_medium=github&utm_campaign=dev_community
 
-### 5. 500 / 502 / 524 错误
+### 6. 500 / 502 / 524 错误
 
 这类错误通常与上游模型、线路波动、超时或长上下文有关。建议：
 

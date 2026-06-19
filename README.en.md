@@ -299,7 +299,34 @@ npm install -g @openai/codex
 
 Windows users usually need to reopen PowerShell after installation. macOS / Linux users can run the `source ~/.zshrc`, `source ~/.bashrc`, or `source ~/.profile` command shown by the script.
 
-### 2. macOS Cannot Auto-Install Node.js
+### 2. npm EACCES While Installing Codex CLI On macOS
+
+If you see an error like:
+
+```text
+npm error code EACCES
+npm error path /usr/local/lib/node_modules/@openai
+```
+
+your user cannot write to npm's global install directory. The latest installer automatically switches npm's global prefix to a user-owned directory. Rerun the installer:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/xujfcn/crazyrouter-codex-cli/main/install-crazyrouter-codex.sh | bash
+```
+
+You can also fix it manually:
+
+```bash
+mkdir -p ~/.npm-global
+npm config set prefix ~/.npm-global
+echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+npm install -g @openai/codex
+```
+
+Avoid `sudo npm install -g @openai/codex`; it often causes more permission and PATH issues later.
+
+### 3. macOS Cannot Auto-Install Node.js
 
 If full setup says it could not auto-install Node.js, install Node.js 22+ manually with one of these options, then open a new terminal and rerun the installer.
 
@@ -332,7 +359,7 @@ node --version
 npm --version
 ```
 
-### 3. API Key Does Not Work
+### 4. API Key Does Not Work
 
 Check environment variables.
 
@@ -357,7 +384,7 @@ Confirm that:
 - the terminal has been restarted;
 - your account has enough balance.
 
-### 4. Model Is Unavailable
+### 5. Model Is Unavailable
 
 Try another model:
 
@@ -369,7 +396,7 @@ Or confirm the model name on the model page:
 
 https://crazyrouter.com/models?utm_source=github&utm_medium=github&utm_campaign=dev_community
 
-### 5. 500 / 502 / 524 Errors
+### 6. 500 / 502 / 524 Errors
 
 These errors are usually related to upstream models, route instability, timeouts, or long context.
 
