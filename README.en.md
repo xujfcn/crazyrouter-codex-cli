@@ -299,7 +299,40 @@ npm install -g @openai/codex
 
 Windows users usually need to reopen PowerShell after installation. macOS / Linux users can run the `source ~/.zshrc`, `source ~/.bashrc`, or `source ~/.profile` command shown by the script.
 
-### 2. API Key Does Not Work
+### 2. macOS Cannot Auto-Install Node.js
+
+If full setup says it could not auto-install Node.js, install Node.js 22+ manually with one of these options, then open a new terminal and rerun the installer.
+
+Official installer:
+
+```text
+https://nodejs.org/en/download
+```
+
+With Homebrew:
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install node
+```
+
+With nvm:
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+source ~/.zshrc
+nvm install 22
+nvm use 22
+```
+
+Verify:
+
+```bash
+node --version
+npm --version
+```
+
+### 3. API Key Does Not Work
 
 Check environment variables.
 
@@ -324,7 +357,7 @@ Confirm that:
 - the terminal has been restarted;
 - your account has enough balance.
 
-### 3. Model Is Unavailable
+### 4. Model Is Unavailable
 
 Try another model:
 
@@ -336,7 +369,7 @@ Or confirm the model name on the model page:
 
 https://crazyrouter.com/models?utm_source=github&utm_medium=github&utm_campaign=dev_community
 
-### 4. 500 / 502 / 524 Errors
+### 5. 500 / 502 / 524 Errors
 
 These errors are usually related to upstream models, route instability, timeouts, or long context.
 

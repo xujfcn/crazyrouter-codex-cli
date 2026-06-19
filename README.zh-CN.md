@@ -299,7 +299,40 @@ npm install -g @openai/codex
 
 Windows 用户安装后通常需要重新打开 PowerShell。macOS / Linux 用户可以执行脚本最后提示的 `source ~/.zshrc`、`source ~/.bashrc` 或 `source ~/.profile`。
 
-### 2. API Key 不生效
+### 2. macOS 提示无法自动安装 Node.js
+
+如果完整安装模式提示无法自动安装 Node.js，可以任选一种方式手动安装 Node.js 22+，然后重新打开终端再运行安装脚本。
+
+官方安装包：
+
+```text
+https://nodejs.org/en/download
+```
+
+使用 Homebrew：
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install node
+```
+
+使用 nvm：
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+source ~/.zshrc
+nvm install 22
+nvm use 22
+```
+
+确认安装成功：
+
+```bash
+node --version
+npm --version
+```
+
+### 3. API Key 不生效
 
 检查环境变量。
 
@@ -324,7 +357,7 @@ echo $env:OPENAI_BASE_URL
 - 终端已经重启；
 - 账户余额充足。
 
-### 3. 模型不可用
+### 4. 模型不可用
 
 换一个模型测试：
 
@@ -336,7 +369,7 @@ codex --model gpt-5.5
 
 https://crazyrouter.com/models?utm_source=github&utm_medium=github&utm_campaign=dev_community
 
-### 4. 500 / 502 / 524 错误
+### 5. 500 / 502 / 524 错误
 
 这类错误通常与上游模型、线路波动、超时或长上下文有关。建议：
 

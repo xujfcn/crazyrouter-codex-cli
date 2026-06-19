@@ -92,6 +92,67 @@ node_major_version() {
   node -p "process.versions.node.split('.')[0]" 2>/dev/null || true
 }
 
+is_macos() {
+  [ "$(uname -s 2>/dev/null || true)" = "Darwin" ]
+}
+
+refresh_homebrew_path() {
+  local brew_bin
+
+  if ensure_cmd brew; then
+    return 0
+  fi
+
+  for brew_bin in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+    if [ -x "$brew_bin" ]; then
+      eval "$("$brew_bin" shellenv)"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+show_manual_node_install_and_exit() {
+  cat >&2 <<'EOF'
+
+Could not auto-install Node.js.
+
+Manual install options:
+
+  Option 1: install Node.js 22+ from the official installer
+    https://nodejs.org/en/download
+
+  Option 2: install Homebrew, then install Node.js
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew install node
+
+  Option 3: install with nvm
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+    source ~/.zshrc
+    nvm install 22
+    nvm use 22
+
+After Node.js is installed, open a new terminal and rerun this installer.
+EOF
+  exit 1
+}
+
+install_homebrew_on_macos() {
+  if refresh_homebrew_path; then
+    return 0
+  fi
+
+  if ! ensure_cmd curl; then
+    warn "curl is required to install Homebrew automatically."
+    return 1
+  fi
+
+  say "Homebrew not found. Installing Homebrew first"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" || return 1
+  refresh_homebrew_path
+}
+
 install_node() {
   if ensure_cmd node && ensure_cmd npm; then
     local major
@@ -105,28 +166,47 @@ install_node() {
   fi
 
   say "Installing Node.js and npm"
-  local sudo_cmd
-  sudo_cmd="$(require_sudo_if_needed)"
 
-  if ensure_cmd brew; then
+  if is_macos; then
+    if ! install_homebrew_on_macos; then
+      show_manual_node_install_and_exit
+    fi
+    brew install node || show_manual_node_install_and_exit
+  elif ensure_cmd brew; then
     brew install node
   elif ensure_cmd apt-get; then
+    local sudo_cmd
+    sudo_cmd="$(require_sudo_if_needed)"
     $sudo_cmd apt-get update
     $sudo_cmd apt-get install -y nodejs npm
   elif ensure_cmd dnf; then
+    local sudo_cmd
+    sudo_cmd="$(require_sudo_if_needed)"
     $sudo_cmd dnf install -y nodejs npm
   elif ensure_cmd yum; then
+    local sudo_cmd
+    sudo_cmd="$(require_sudo_if_needed)"
     $sudo_cmd yum install -y nodejs npm
   elif ensure_cmd pacman; then
+    local sudo_cmd
+    sudo_cmd="$(require_sudo_if_needed)"
     $sudo_cmd pacman -Sy --noconfirm nodejs npm
   elif ensure_cmd zypper; then
+    local sudo_cmd
+    sudo_cmd="$(require_sudo_if_needed)"
     $sudo_cmd zypper install -y nodejs npm
   else
-    fail "Could not auto-install Node.js. Please install Node.js 22+ manually, then rerun."
+    show_manual_node_install_and_exit
   fi
 
   if ! ensure_cmd node || ! ensure_cmd npm; then
-    fail "Node.js installation finished, but node/npm are still not found in PATH."
+    if is_macos; then
+      refresh_homebrew_path || true
+    fi
+  fi
+
+  if ! ensure_cmd node || ! ensure_cmd npm; then
+    show_manual_node_install_and_exit
   fi
 
   ok "Node.js installed: $(node --version) / npm $(npm --version)"
