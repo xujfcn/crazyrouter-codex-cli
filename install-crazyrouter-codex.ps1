@@ -180,12 +180,30 @@ function Read-SecretPlainText($Prompt) {
   }
 }
 
+function Get-MaskedSecret($Value) {
+  if ([string]::IsNullOrEmpty($Value)) {
+    return '****'
+  }
+
+  if ($Value.Length -le 8) {
+    return '****'
+  }
+
+  if ($Value.Length -le 16) {
+    return "$($Value.Substring(0, 3))...$($Value.Substring($Value.Length - 3))"
+  }
+
+  return "$($Value.Substring(0, 6))...$($Value.Substring($Value.Length - 4))"
+}
+
 function Read-Settings {
   Write-Step "Enter your Crazyrouter API key"
-  $token = Read-SecretPlainText 'Paste your Crazyrouter API key (input hidden)'
+  $token = Read-SecretPlainText 'Paste your Crazyrouter API key (hidden, masked preview shown after input)'
   if ([string]::IsNullOrWhiteSpace($token)) {
     throw 'No API key entered. Get one at https://cn.crazyrouter.com'
   }
+
+  Write-Ok "API key received: $(Get-MaskedSecret $token)"
 
   if ($token -notmatch '^sk-|^cr-|^rk-') {
     Write-WarnMsg "Token format looks unusual. Continuing anyway."

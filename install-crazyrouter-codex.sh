@@ -362,11 +362,26 @@ read_from_tty() {
   printf "%s" "$value"
 }
 
+mask_secret() {
+  local value="$1"
+  local length="${#value}"
+
+  if [ "$length" -le 8 ]; then
+    printf "%s" "****"
+  elif [ "$length" -le 16 ]; then
+    printf "%s...%s" "${value:0:3}" "${value: -3}"
+  else
+    printf "%s...%s" "${value:0:6}" "${value: -4}"
+  fi
+}
+
 collect_settings() {
-  API_KEY="$(read_from_tty "Paste your Crazyrouter API key (input hidden): " true)"
+  API_KEY="$(read_from_tty "Paste your Crazyrouter API key (hidden, masked preview shown after input): " true)"
   if [ -z "${API_KEY// }" ]; then
     fail "No API key entered. Get one at https://cn.crazyrouter.com"
   fi
+
+  ok "API key received: $(mask_secret "$API_KEY")"
 
   if ! printf "%s" "$API_KEY" | grep -Eq '^(sk-|cr-|rk-)'; then
     warn "Token format looks unusual. Continuing anyway."
