@@ -457,6 +457,33 @@ export OPENAI_BASE_URL=https://cn.crazyrouter.com/v1
 - Codex CLI：https://github.com/openai/codex
 - Telegram：https://t.me/crzrouter
 
+---
+
+## 使用 gpt-5.5-pro
+
+`gpt-5.5-pro` 是能力更强的 Pro 版模型。以下任意一种方式都可以使用它。
+
+1. 临时使用一次，不改动配置：
+
+```bash
+codex --model gpt-5.5-pro
+```
+
+2. 在 `config.toml` 中设为默认模型：
+
+```toml
+model = "gpt-5.5-pro"
+model_provider = "crazyrouter"
+```
+
+3. 运行安装脚本时，在“默认模型名”一步直接输入 `gpt-5.5-pro`。
+
+4. 在已启动的会话内用 `/model` 命令切换（取决于你的 Codex CLI 版本）。
+
+是否可用取决于 Crazyrouter 账户、已开通线路和上游状态。如果 `gpt-5.5-pro` 返回模型错误，请到模型列表确认准确名称：
+
+https://crazyrouter.com/models?utm_source=github&utm_medium=github&utm_campaign=dev_community
+
 ## License
 
 MIT

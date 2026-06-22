@@ -459,6 +459,33 @@ Node.js 22+ is recommended.
 - Codex CLI: https://github.com/openai/codex
 - Telegram: https://t.me/crzrouter
 
+---
+
+## Use gpt-5.5-pro
+
+`gpt-5.5-pro` is the higher-capability Pro model. You can select it in any of these ways.
+
+1. One-off run, without changing config:
+
+```bash
+codex --model gpt-5.5-pro
+```
+
+2. Set it as the default in `config.toml`:
+
+```toml
+model = "gpt-5.5-pro"
+model_provider = "crazyrouter"
+```
+
+3. When running the installer, enter `gpt-5.5-pro` at the default model name step.
+
+4. Switch inside a running session with the `/model` command (depending on your Codex CLI version).
+
+Availability depends on your Crazyrouter account, enabled routes, and upstream status. If `gpt-5.5-pro` returns a model error, confirm the exact name on the model list:
+
+https://crazyrouter.com/models?utm_source=github&utm_medium=github&utm_campaign=dev_community
+
 ## License
 
 MIT

@@ -141,6 +141,31 @@ codex --help
 - OpenAI Codex CLI: https://github.com/openai/codex
 - Telegram: https://t.me/crzrouter
 
+---
+
+## Use gpt-5.5-pro
+
+`gpt-5.5-pro` is the higher-capability Pro model. Select it in any of these ways.
+
+1. One-off run, without changing config:
+
+```bash
+codex --model gpt-5.5-pro
+```
+
+2. Set it as the default in `config.toml`:
+
+```toml
+model = "gpt-5.5-pro"
+model_provider = "crazyrouter"
+```
+
+3. When running the installer, enter `gpt-5.5-pro` at the default model name step.
+
+4. Switch inside a running session with the `/model` command (depending on your Codex CLI version).
+
+Availability depends on your Crazyrouter account, enabled routes, and upstream status. Confirm the exact name on the [model list](https://crazyrouter.com/models?utm_source=github&utm_medium=github&utm_campaign=dev_community) if you get a model error. Per-language guides: [English](./README.en.md) · [简体中文](./README.zh-CN.md) · [日本語](./README.ja.md) · [Русский](./README.ru.md).
+
 ## License
 
 MIT
