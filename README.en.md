@@ -185,7 +185,7 @@ Config path:
 Example:
 
 ```toml
-model = "gpt-5.5"
+model = "gpt-5.6-sol"
 model_provider = "crazyrouter"
 
 [model_providers.crazyrouter]
@@ -221,7 +221,7 @@ wire_api = "responses"
 
 ```bash
 codex                              # use the default model from config
-codex --model gpt-5.5              # example default model
+codex --model gpt-5.6-sol          # example default model
 codex --model gpt-4o-mini          # example lower-cost model
 codex --model claude-sonnet-4-6    # example Claude model, depending on account and route support
 ```
@@ -389,7 +389,7 @@ Confirm that:
 Try another model:
 
 ```bash
-codex --model gpt-5.5
+codex --model gpt-5.6-sol
 ```
 
 Or confirm the model name on the model page:

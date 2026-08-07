@@ -102,7 +102,7 @@ OPENAI_BASE_URL=https://cn.crazyrouter.com/v1
 They also write a Codex provider block similar to:
 
 ```toml
-model = "gpt-5.5"
+model = "gpt-5.6-sol"
 model_provider = "crazyrouter"
 
 [model_providers.crazyrouter]

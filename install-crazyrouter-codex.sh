@@ -7,7 +7,7 @@
 set -euo pipefail
 
 BASE_URL="https://cn.crazyrouter.com/v1"
-DEFAULT_MODEL="gpt-5.5"
+DEFAULT_MODEL="gpt-5.6-sol"
 MODE="full"
 
 GREEN='\033[0;32m'

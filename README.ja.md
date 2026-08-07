@@ -185,7 +185,7 @@ setx OPENAI_BASE_URL "https://cn.crazyrouter.com/v1"
 例:
 
 ```toml
-model = "gpt-5.5"
+model = "gpt-5.6-sol"
 model_provider = "crazyrouter"
 
 [model_providers.crazyrouter]
@@ -221,7 +221,7 @@ wire_api = "responses"
 
 ```bash
 codex                              # config のデフォルトモデルを使用
-codex --model gpt-5.5              # デフォルトモデルの例
+codex --model gpt-5.6-sol          # デフォルトモデルの例
 codex --model gpt-4o-mini          # 低コストモデルの例
 codex --model claude-sonnet-4-6    # Claude モデルの例。アカウントとルート対応状況による
 ```
@@ -329,7 +329,7 @@ echo $env:OPENAI_BASE_URL
 別のモデルを試します。
 
 ```bash
-codex --model gpt-5.5
+codex --model gpt-5.6-sol
 ```
 
 または、モデルページでモデル名を確認してください。

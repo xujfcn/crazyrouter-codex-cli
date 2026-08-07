@@ -11,7 +11,7 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $BaseUrl = 'https://cn.crazyrouter.com/v1'
-$DefaultModel = 'gpt-5.5'
+$DefaultModel = 'gpt-5.6-sol'
 
 function Write-Step($Message) {
   Write-Host "`n==> $Message" -ForegroundColor Cyan

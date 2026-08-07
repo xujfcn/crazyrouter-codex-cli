@@ -185,7 +185,7 @@ setx OPENAI_BASE_URL "https://cn.crazyrouter.com/v1"
 Пример:
 
 ```toml
-model = "gpt-5.5"
+model = "gpt-5.6-sol"
 model_provider = "crazyrouter"
 
 [model_providers.crazyrouter]
@@ -221,7 +221,7 @@ wire_api = "responses"
 
 ```bash
 codex                              # модель по умолчанию из config
-codex --model gpt-5.5              # пример модели по умолчанию
+codex --model gpt-5.6-sol          # пример модели по умолчанию
 codex --model gpt-4o-mini          # пример более дешевой модели
 codex --model claude-sonnet-4-6    # пример Claude, зависит от аккаунта и поддержки маршрута
 ```
@@ -329,7 +329,7 @@ echo $env:OPENAI_BASE_URL
 Попробуйте другую модель:
 
 ```bash
-codex --model gpt-5.5
+codex --model gpt-5.6-sol
 ```
 
 Или проверьте имя модели на странице моделей:
