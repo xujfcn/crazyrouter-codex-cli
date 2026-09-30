@@ -2,6 +2,12 @@
 
 # Use OpenAI Codex CLI With Crazyrouter
 
+<!-- crazyrouter-links -->
+> - 📖 **Full Codex CLI integration guide (manual config, base URL rules, recommended models, FAQ)**: https://crazyrouter.com/en/integrations/codex?utm_source=github&utm_medium=readme&utm_campaign=codex
+> - 🧩 **Every OpenAI model with live prices**: https://crazyrouter.com/en/models/openai?utm_source=github&utm_medium=readme&utm_campaign=codex
+> - 💰 **Model price comparison (list vs Azure / Bedrock / Vertex vs Crazyrouter, verified daily)**: https://crazyrouter.com/en/pricing?utm_source=github&utm_medium=readme&utm_campaign=codex
+> - 🗂 **All models by vendor**: https://crazyrouter.com/en/models?utm_source=github&utm_medium=readme&utm_campaign=codex
+
 **Connect Codex CLI to Crazyrouter in minutes, then use Crazyrouter-supported models through an OpenAI-compatible API.**
 
 [English](./README.en.md) · [简体中文](./README.zh-CN.md) · [日本語](./README.ja.md) · [Русский](./README.ru.md)

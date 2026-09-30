@@ -2,6 +2,12 @@
 
 # Crazyrouter Codex CLI
 
+<!-- crazyrouter-links -->
+> - 📖 **完整接入指南（手动配置、Base URL 规则、推荐模型、FAQ）**：https://crazyrouter.com/zh/integrations/codex?utm_source=github&utm_medium=readme&utm_campaign=codex
+> - 🧩 **OpenAI 全部模型与实时价格**：https://crazyrouter.com/zh/models/openai?utm_source=github&utm_medium=readme&utm_campaign=codex
+> - 💰 **模型价格对比（官方 / Azure / Bedrock / Vertex / Crazyrouter，每日核对）**：https://crazyrouter.com/zh/pricing?utm_source=github&utm_medium=readme&utm_campaign=codex
+> - 🗂 **按厂商浏览全部模型**：https://crazyrouter.com/zh/models?utm_source=github&utm_medium=readme&utm_campaign=codex
+
 **Run OpenAI Codex CLI through Crazyrouter with a clean one-command setup for Windows, macOS, and Linux.**
 
 [English](./README.en.md) · [简体中文](./README.zh-CN.md) · [日本語](./README.ja.md) · [Русский](./README.ru.md)
